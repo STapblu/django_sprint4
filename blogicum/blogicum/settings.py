@@ -1,20 +1,17 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Для локальной разработки
-SECRET_KEY = os.environ.get('SECRET_KEY', 'blogicum-default-secret-key')
+SECRET_KEY = 'django-insecure-4ug(&@br+yn+5o55-#qaxw=w4=bxa59h66^y89d!$5ig1a_$oy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -28,15 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_bootstrap5',
-
     'blog.apps.BlogConfig',
     'pages.apps.PagesConfig',
     'core.apps.CoreConfig',
 
 ]
 
-if DEBUG:
-    INSTALLED_APPS += ['debug_toolbar']
+# if DEBUG:
+#     INSTALLED_APPS += ['debug_toolbar']
 
 
 MIDDLEWARE = [
@@ -47,7 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'blogicum.urls'
